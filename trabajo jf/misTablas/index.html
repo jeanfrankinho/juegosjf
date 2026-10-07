@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#6366f1">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <title>MultiAventura Matemática - Tablas & SIMCE 4° Básico</title>
+  <!-- Google Fonts para una tipografía amigable y moderna -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #ec4899;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --bg: #f8fafc;
+      --text: #1e293b;
+      --font-family: 'Nunito', system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-family);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(#c7d2fe 1.5px, transparent 1.5px),
+        radial-gradient(#fbcfe8 1.5px, var(--bg) 1.5px);
+      background-size: 36px 36px;
+      background-position: 0 0, 18px 18px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .login-card {
+      background: #ffffff;
+      border: 3px solid #e2e8f0;
+      border-radius: 28px;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 580px;
+      box-shadow: 0 20px 45px rgba(99, 102, 241, 0.15);
+      text-align: center;
+      animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .brand-logo {
+      margin-bottom: 1.5rem;
+    }
+
+    .brand-logo img {
+      max-width: 290px;
+      height: auto;
+    }
+
+    .welcome-title {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: #1e1b4b;
+      margin-bottom: 0.5rem;
+    }
+
+    .welcome-subtitle {
+      font-size: 1rem;
+      color: #64748b;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 1.75rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #334155;
+      margin-bottom: 0.5rem;
+    }
+
+    .name-input {
+      width: 100%;
+      padding: 0.9rem 1.25rem;
+      font-size: 1.15rem;
+      font-weight: 800;
+      border: 3px solid #cbd5e1;
+      border-radius: 16px;
+      outline: none;
+      transition: all 0.2s ease;
+      color: #1e293b;
+      background: #f8fafc;
+    }
+
+    .name-input:focus {
+      border-color: var(--primary);
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    }
+
+    /* GRILLA DE SELECCIÓN DE AVATAR */
+    .avatar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    .avatar-option {
+      background: #f8fafc;
+      border: 3px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 0.6rem 0.4rem;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .avatar-option:hover {
+      transform: translateY(-4px) scale(1.04);
+      border-color: #a5b4fc;
+      background: #eef2ff;
+    }
+
+    .avatar-option.selected {
+      border-color: var(--secondary);
+      background: #fdf2f8;
+      box-shadow: 0 8px 18px rgba(236, 72, 153, 0.25);
+      transform: scale(1.06);
+    }
+
+    .avatar-img {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+
+    .avatar-name {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #475569;
+    }
+
+    .avatar-option.selected .avatar-name {
+      color: var(--secondary);
+    }
+
+    /* BOTÓN DE ENTRADA */
+    .enter-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 9999px;
+      padding: 1.1rem;
+      font-size: 1.25rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .enter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(99, 102, 241, 0.45);
+    }
+
+    .enter-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* ALERTA DE ERROR */
+    .error-msg {
+      background: #fee2e2;
+      border: 2px solid #ef4444;
+      color: #b91c1c;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      margin-bottom: 1.25rem;
+      display: none;
+      animation: shake 0.3s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    .previous-profile-box {
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 2px dashed #cbd5e1;
+      display: none;
+    }
+
+    .resume-btn {
+      background: #f1f5f9;
+      border: 2px solid #cbd5e1;
+      border-radius: 9999px;
+      padding: 0.6rem 1.2rem;
+      font-weight: 800;
+      color: #334155;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .resume-btn:hover {
+      background: #e2e8f0;
+      border-color: #94a3b8;
+    }
+
+    @media (max-width: 540px) {
+      .login-card {
+        padding: 2rem 1.25rem;
+      }
+      .avatar-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <!-- Logotipo y Nombre de la Plataforma -->
+    <div class="brand-logo">
+      <img src="Sistema/IMAGEN/logo.svg" alt="MultiAventura Matemática">
+    </div>
+
+    <h1 class="welcome-title">¡Bienvenido a tu Aventura!</h1>
+    <p class="welcome-subtitle">Aprende las tablas del 2 al 10 y prepárate para el SIMCE de 4° básico jugando.</p>
+
+    <!-- Caja de mensajes de error -->
+    <div id="errorAlert" class="error-msg"></div>
+
+    <form id="loginForm" onsubmit="handleLogin(event)">
+      <!-- Campo Nombre -->
+      <div class="form-group">
+        <label for="studentNameInput" class="form-label">
+          ✏️ ¿Cuál es tu nombre o apodo de aventurero?
+        </label>
+        <input 
+          type="text" 
+          id="studentNameInput" 
+          class="name-input" 
+          placeholder="Ej: Sofía, Matías, Lucas..." 
+          autocomplete="off" 
+          maxlength="20"
+        >
+      </div>
+
+      <!-- Selección de Avatar -->
+      <div class="form-group">
+        <label class="form-label">
+          🎭 Selecciona tu personaje favorito:
+        </label>
+        
+        <div class="avatar-grid" id="avatarGrid">
+          <div class="avatar-option selected" data-avatar="avatar_astronauta.svg" onclick="selectAvatar('avatar_astronauta.svg', this)">
+            <img class="avatar-img" src="Sistema/IMAGEN/avatar_astronauta.svg" alt="Astronauta">
+            <span class="avatar-name">Astronauta</span>
+          </div>
+
+          <div class="avatar-option" data-avatar="avatar_superheroina.svg" onclick="selectAvatar('avatar_superheroina.svg', this)">
+            <img class="avatar-img" src="Sistema/IMAGEN/avatar_superheroina.svg" alt="Superheroína">
+            <span class="avatar-name">Superhéroe</span>
+          </div>
+
+          <div class="avatar-option" data-avatar="avatar_detective.svg" onclick="selectAvatar('avatar_detective.svg', this)">
+            <img class="avatar-img" src="Sistema/IMAGEN/avatar_detective.svg" alt="Detective">
+            <span class="avatar-name">Detective</span>
+          </div>
+
+          <div class="avatar-option" data-avatar="avatar_robot.svg" onclick="selectAvatar('avatar_robot.svg', this)">
+            <img class="avatar-img" src="Sistema/IMAGEN/avatar_robot.svg" alt="Robot">
+            <span class="avatar-name">Robot</span>
+          </div>
+
+          <div class="avatar-option" data-avatar="avatar_mago.svg" onclick="selectAvatar('avatar_mago.svg', this)">
+            <img class="avatar-img" src="Sistema/IMAGEN/avatar_mago.svg" alt="Mago">
+            <span class="avatar-name">Mago</span>
+          </div>
+
+          <div class="avatar-option" data-avatar="avatar_explorador.svg" onclick="selectAvatar('avatar_explorador.svg', this)">
+            <img class="avatar-img" src="Sistema/IMAGEN/avatar_explorador.svg" alt="Explorador">
+            <span class="avatar-name">Explorador</span>
+          </div>
+
+          <div class="avatar-option" data-avatar="avatar_dragon.svg" onclick="selectAvatar('avatar_dragon.svg', this)">
+            <img class="avatar-img" src="Sistema/IMAGEN/avatar_dragon.svg" alt="Dragón">
+            <span class="avatar-name">Dragón</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón Ingresar -->
+      <button type="submit" class="enter-btn">
+        <span>¡Comenzar la Aventura!</span>
+        <span>🚀</span>
+      </button>
+    </form>
+
+    <!-- Opción de continuar con perfil anterior si existe -->
+    <div id="prevProfileBox" class="previous-profile-box">
+      <p style="font-size: 0.9rem; color: #64748b; font-weight: 700; margin-bottom: 0.5rem;">¿Ya estuviste aquí antes?</p>
+      <button type="button" class="resume-btn" id="resumeBtn" onclick="resumePreviousProfile()">
+        Continuar como <span id="prevStudentName"></span> ➡️
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let chosenAvatar = 'avatar_astronauta.svg';
+
+    function selectAvatar(avatarFile, cardEl) {
+      chosenAvatar = avatarFile;
+      document.querySelectorAll('.avatar-option').forEach(el => el.classList.remove('selected'));
+      cardEl.classList.add('selected');
+    }
+
+    function showError(msg) {
+      const errEl = document.getElementById('errorAlert');
+      errEl.textContent = msg;
+      errEl.style.display = 'block';
+    }
+
+    function hideError() {
+      const errEl = document.getElementById('errorAlert');
+      errEl.style.display = 'none';
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      hideError();
+
+      const nameInput = document.getElementById('studentNameInput');
+      const name = nameInput.value.trim();
+
+      // Validación de datos
+      if (!name) {
+        showError('⚠️ ¡Por favor escribe tu nombre antes de comenzar!');
+        nameInput.focus();
+        return;
+      }
+
+      if (name.length < 2) {
+        showError('⚠️ El nombre debe tener al menos 2 letras.');
+        nameInput.focus();
+        return;
+      }
+
+      if (!chosenAvatar) {
+        showError('⚠️ Elige un personaje para acompañarte en tu aventura.');
+        return;
+      }
+
+      // Cargar progreso previo si coincide el nombre, o inicializar nuevo
+      let currentData = {};
+      const saved = localStorage.getItem('multiAventura_estudiante');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed.nombre && parsed.nombre.toLowerCase() === name.toLowerCase()) {
+            currentData = parsed;
+          }
+        } catch (err) {}
+      }
+
+      const updatedStudent = {
+        nombre: name,
+        avatar: chosenAvatar,
+        puntos: currentData.puntos !== undefined ? currentData.puntos : 100,
+        estrellas: currentData.estrellas !== undefined ? currentData.estrellas : 3,
+        tablasProgreso: currentData.tablasProgreso || {
+          2: { progreso: 100, estrellas: 3, completada: true },
+          3: { progreso: 50, estrellas: 1, completada: false },
+          4: { progreso: 0, estrellas: 0, completada: false },
+          5: { progreso: 0, estrellas: 0, completada: false },
+          6: { progreso: 0, estrellas: 0, completada: false },
+          7: { progreso: 0, estrellas: 0, completada: false },
+          8: { progreso: 0, estrellas: 0, completada: false },
+          9: { progreso: 0, estrellas: 0, completada: false },
+          10: { progreso: 0, estrellas: 0, completada: false }
+        },
+        logros: currentData.logros || {
+          primera_tabla: true,
+          maestro_2: true,
+          racha_tiempo: false,
+          detective_pro: false,
+          memoria_genio: false,
+          simce_aprobado: false
+        },
+        ensayosSimce: currentData.ensayosSimce || []
+      };
+
+      // Guardar en LocalStorage
+      localStorage.setItem('multiAventura_estudiante', JSON.stringify(updatedStudent));
+
+      // Redirigir a Sistema/index.html
+      window.location.href = 'Sistema/index.html';
+    }
+
+    function resumePreviousProfile() {
+      window.location.href = 'Sistema/index.html';
+    }
+
+    // Comprobar si hay un perfil guardado previamente
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('multiAventura_estudiante');
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          if (parsed.nombre) {
+            const prevBox = document.getElementById('prevProfileBox');
+            const prevNameEl = document.getElementById('prevStudentName');
+            if (prevBox && prevNameEl) {
+              prevNameEl.textContent = parsed.nombre;
+              prevBox.style.display = 'block';
+            }
+          }
+        } catch (e) {}
+      }
+    });
+  </script>
+</body>
+</html>

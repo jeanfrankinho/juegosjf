@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <radialGradient id="gradAstro" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#1e3a8a" />
+    </radialGradient>
+    <linearGradient id="visorGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#gradAstro)" />
+  <!-- Helmet -->
+  <circle cx="60" cy="55" r="32" fill="#f8fafc" stroke="#cbd5e1" stroke-width="3" />
+  <!-- Visor -->
+  <rect x="40" y="42" width="40" height="26" rx="13" fill="url(#visorGrad)" stroke="#0ea5e9" stroke-width="2" />
+  <ellipse cx="50" cy="48" rx="6" ry="3" fill="#ffffff" opacity="0.7" transform="rotate(-15 50 48)" />
+  <!-- Face inside visor -->
+  <circle cx="53" cy="54" r="3" fill="#0f172a" />
+  <circle cx="67" cy="54" r="3" fill="#0f172a" />
+  <path d="M 56 61 Q 60 64 64 61" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round" />
+  <!-- Body / Suit -->
+  <path d="M 36 94 Q 60 82 84 94 L 88 114 L 32 114 Z" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+  <circle cx="60" cy="98" r="5" fill="#3b82f6" />
+  <!-- Stars decoration -->
+  <polygon points="22,25 25,28 22,31 19,28" fill="#fef08a" />
+  <polygon points="98,32 101,35 98,38 95,35" fill="#fef08a" />
+</svg>

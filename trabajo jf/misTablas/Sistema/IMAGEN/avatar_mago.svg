@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <radialGradient id="gradWiz" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#4c1d95" />
+    </radialGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#gradWiz)" />
+  <!-- Hair / Beard -->
+  <circle cx="60" cy="65" r="24" fill="#ede9fe" />
+  <ellipse cx="60" cy="76" rx="16" ry="14" fill="#ffffff" />
+  <!-- Face -->
+  <circle cx="60" cy="62" r="19" fill="#fde047" />
+  <!-- Wizard Hat -->
+  <path d="M 28 50 C 35 48 85 48 92 50 C 80 44 40 44 28 50 Z" fill="#6d28d9" />
+  <ellipse cx="60" cy="49" rx="36" ry="6" fill="#7c3aed" />
+  <path d="M 36 47 Q 56 12 76 18 Q 66 32 84 47 Z" fill="#6d28d9" stroke="#5b21b6" stroke-width="2" />
+  <!-- Stars on Hat -->
+  <polygon points="56,32 58,35 62,35 59,38 60,42 56,39 52,42 53,38 50,35 54,35" fill="#fef08a" />
+  <!-- Eyes -->
+  <circle cx="53" cy="60" r="3" fill="#1e1b4b" />
+  <circle cx="67" cy="60" r="3" fill="#1e1b4b" />
+  <!-- Smile -->
+  <path d="M 56 68 Q 60 72 64 68" stroke="#1e1b4b" stroke-width="2" fill="none" stroke-linecap="round" />
+  <!-- Robe -->
+  <path d="M 34 94 Q 60 84 86 94 L 90 114 L 30 114 Z" fill="#581c87" />
+  <polygon points="60,96 63,101 69,101 64,105 66,111 60,107 54,111 56,105 51,101 57,101" fill="#facc15" />
+</svg>

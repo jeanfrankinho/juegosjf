@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <radialGradient id="gradDet" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#78350f" />
+    </radialGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#gradDet)" />
+  <!-- Face -->
+  <circle cx="60" cy="62" r="24" fill="#fde68a" />
+  <!-- Hat -->
+  <ellipse cx="60" cy="46" rx="36" ry="7" fill="#713f12" />
+  <path d="M 38 46 Q 42 22 60 22 Q 78 22 82 46 Z" fill="#854d0e" />
+  <rect x="42" y="40" width="36" height="5" fill="#f59e0b" />
+  <!-- Eyes -->
+  <circle cx="50" cy="60" r="3.5" fill="#1e293b" />
+  <circle cx="70" cy="60" r="3.5" fill="#1e293b" />
+  <!-- Smile with pipe / fun -->
+  <path d="M 54 72 Q 60 76 66 72" stroke="#451a03" stroke-width="2.5" fill="none" stroke-linecap="round" />
+  <!-- Magnifying glass -->
+  <circle cx="78" cy="68" r="14" fill="none" stroke="#e2e8f0" stroke-width="4" opacity="0.8" />
+  <line x1="88" y1="78" x2="102" y2="92" stroke="#713f12" stroke-width="5" stroke-linecap="round" />
+  <ellipse cx="76" cy="66" rx="4" ry="2" fill="#ffffff" opacity="0.6" />
+  <!-- Trench coat collar -->
+  <path d="M 36 94 L 46 86 L 60 98 L 74 86 L 84 94 L 88 114 L 32 114 Z" fill="#a16207" />
+</svg>

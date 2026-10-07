@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <radialGradient id="gradRob" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#064e3b" />
+    </radialGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#gradRob)" />
+  <!-- Antenna -->
+  <line x1="60" y1="36" x2="60" y2="24" stroke="#e2e8f0" stroke-width="4" stroke-linecap="round" />
+  <circle cx="60" cy="22" r="6" fill="#ef4444" />
+  <!-- Head -->
+  <rect x="36" y="36" width="48" height="42" rx="10" fill="#94a3b8" stroke="#475569" stroke-width="3" />
+  <!-- Ears -->
+  <rect x="28" y="48" width="8" height="18" rx="3" fill="#64748b" />
+  <rect x="84" y="48" width="8" height="18" rx="3" fill="#64748b" />
+  <!-- Screen face -->
+  <rect x="42" y="42" width="36" height="30" rx="6" fill="#0f172a" />
+  <!-- Cyan glowing eyes -->
+  <circle cx="51" cy="53" r="4.5" fill="#22d3ee" />
+  <circle cx="69" cy="53" r="4.5" fill="#22d3ee" />
+  <!-- Mouth / Equalizer -->
+  <path d="M 48 64 L 54 64 L 57 61 L 63 67 L 66 64 L 72 64" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" />
+  <!-- Neck & Torso -->
+  <rect x="52" y="78" width="16" height="8" fill="#64748b" />
+  <rect x="34" y="86" width="52" height="28" rx="6" fill="#cbd5e1" stroke="#475569" stroke-width="2.5" />
+  <circle cx="60" cy="98" r="6" fill="#38bdf8" />
+</svg>
