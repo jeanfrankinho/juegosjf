@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <radialGradient id="trophyGold" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="45%" stop-color="#facc15" />
+      <stop offset="100%" stop-color="#b45309" />
+    </radialGradient>
+  </defs>
+  <!-- Base -->
+  <rect x="24" y="66" width="32" height="8" rx="2" fill="#78350f" />
+  <rect x="28" y="58" width="24" height="8" rx="2" fill="#92400e" />
+  <path d="M 36 48 L 44 48 L 42 58 L 38 58 Z" fill="url(#trophyGold)" />
+  <!-- Handles -->
+  <path d="M 22 22 Q 10 28 22 40 L 26 36 Q 16 28 26 22 Z" fill="#f59e0b" />
+  <path d="M 58 22 Q 70 28 58 40 L 54 36 Q 64 28 54 22 Z" fill="#f59e0b" />
+  <!-- Cup -->
+  <path d="M 22 16 Q 22 48 40 48 Q 58 48 58 16 Z" fill="url(#trophyGold)" stroke="#d97706" stroke-width="1.5" />
+  <!-- Star on Cup -->
+  <polygon points="40,24 42,29 48,29 43,33 45,38 40,35 35,38 37,33 32,29 38,29" fill="#ffffff" />
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <radialGradient id="gradHero" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#881337" />
+    </radialGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#gradHero)" />
+  <!-- Cape in background -->
+  <path d="M 30 75 Q 60 115 90 75 L 85 110 L 35 110 Z" fill="#e11d48" />
+  <!-- Hair back -->
+  <circle cx="60" cy="50" r="32" fill="#78350f" />
+  <!-- Head -->
+  <circle cx="60" cy="54" r="24" fill="#fed7aa" />
+  <!-- Hair bangs -->
+  <path d="M 36 50 Q 60 30 84 50 Q 75 42 60 44 Q 45 42 36 50 Z" fill="#78350f" />
+  <!-- Hero Mask -->
+  <path d="M 40 50 Q 50 46 60 52 Q 70 46 80 50 Q 74 60 60 56 Q 46 60 40 50 Z" fill="#ec4899" stroke="#be185d" stroke-width="1.5" />
+  <!-- Eyes -->
+  <circle cx="50" cy="52" r="3" fill="#ffffff" />
+  <circle cx="50" cy="52" r="1.5" fill="#0f172a" />
+  <circle cx="70" cy="52" r="3" fill="#ffffff" />
+  <circle cx="70" cy="52" r="1.5" fill="#0f172a" />
+  <!-- Smile -->
+  <path d="M 54 66 Q 60 72 66 66" stroke="#991b1b" stroke-width="2.5" fill="none" stroke-linecap="round" />
+  <!-- Suit -->
+  <path d="M 38 90 Q 60 80 82 90 L 86 114 L 34 114 Z" fill="#fbbf24" stroke="#d97706" stroke-width="2" />
+  <!-- Star emblem -->
+  <polygon points="60,88 62,94 68,94 63,98 65,104 60,100 55,104 57,98 52,94 58,94" fill="#dc2626" />
+</svg>

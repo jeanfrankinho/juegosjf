@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <radialGradient id="gradExp" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#14b8a6" />
+      <stop offset="100%" stop-color="#134e4a" />
+    </radialGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#gradExp)" />
+  <!-- Face -->
+  <circle cx="60" cy="62" r="23" fill="#fed7aa" />
+  <!-- Explorer Hat -->
+  <ellipse cx="60" cy="46" rx="36" ry="8" fill="#ca8a04" />
+  <path d="M 38 46 Q 42 24 60 22 Q 78 24 82 46 Z" fill="#eab308" />
+  <rect x="40" y="42" width="40" height="4" fill="#854d0e" />
+  <!-- Hair bangs -->
+  <path d="M 46 48 Q 53 54 60 49 Q 67 54 74 48" stroke="#78350f" stroke-width="4" fill="none" stroke-linecap="round" />
+  <!-- Eyes -->
+  <circle cx="51" cy="60" r="3.5" fill="#0f172a" />
+  <circle cx="69" cy="60" r="3.5" fill="#0f172a" />
+  <ellipse cx="49" cy="58" rx="1.5" ry="1.5" fill="#ffffff" />
+  <ellipse cx="67" cy="58" rx="1.5" ry="1.5" fill="#ffffff" />
+  <!-- Smile -->
+  <path d="M 54 70 Q 60 76 66 70" stroke="#78350f" stroke-width="2.5" fill="none" stroke-linecap="round" />
+  <!-- Explorer vest -->
+  <path d="M 36 94 Q 60 84 84 94 L 88 114 L 32 114 Z" fill="#ca8a04" />
+  <path d="M 48 88 L 60 100 L 72 88" stroke="#713f12" stroke-width="2.5" fill="none" />
+</svg>

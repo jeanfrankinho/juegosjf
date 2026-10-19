@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#6366f1">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <title>MultiAventura Matemática - Tablas & SIMCE 4° Básico</title>
+  <!-- Google Fonts para una tipografía amigable y moderna -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #ec4899;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --bg: #f8fafc;
+      --text: #1e293b;
+      --font-family: 'Nunito', system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-family);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(#c7d2fe 1.5px, transparent 1.5px),
+        radial-gradient(#fbcfe8 1.5px, var(--bg) 1.5px);
+      background-size: 36px 36px;
+      background-position: 0 0, 18px 18px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .login-card {
+      background: #ffffff;
+      border: 3px solid #e2e8f0;
+      border-radius: 28px;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 20px 45px rgba(99, 102, 241, 0.15);
+      text-align: center;
+      animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .brand-logo {
+      margin-bottom: 1.25rem;
+    }
+
+    .brand-logo img {
+      max-width: 280px;
+      height: auto;
+    }
+
+    .welcome-title {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: #1e1b4b;
+      margin-bottom: 0.35rem;
+    }
+
+    .welcome-subtitle {
+      font-size: 0.95rem;
+      color: #64748b;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+
+    /* LISTA DE ESTUDIANTES GUARDADOS EN ESTE EQUIPO */
+    .saved-students-container {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 1.25rem;
+      margin-bottom: 1.75rem;
+      text-align: left;
+    }
+
+    .saved-students-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #334155;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .saved-students-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-height: 190px;
+      overflow-y: auto;
+      padding-right: 0.3rem;
+    }
+
+    .student-item-pill {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: 14px;
+      padding: 0.6rem 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .student-item-pill:hover {
+      border-color: var(--primary);
+      background: #eef2ff;
+      transform: translateX(4px);
+    }
+
+    .student-item-info {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex: 1;
+    }
+
+    .student-item-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+    }
+
+    .student-item-name {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .student-item-score {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #d97706;
+    }
+
+    .btn-delete-student {
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      color: #dc2626;
+      border-radius: 8px;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-delete-student:hover {
+      background: #ef4444;
+      color: #ffffff;
+    }
+
+    .form-group {
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #334155;
+      margin-bottom: 0.45rem;
+    }
+
+    .name-input {
+      width: 100%;
+      padding: 0.85rem 1.2rem;
+      font-size: 1.15rem;
+      font-weight: 800;
+      border: 3px solid #cbd5e1;
+      border-radius: 16px;
+      outline: none;
+      transition: all 0.2s ease;
+      color: #1e293b;
+      background: #f8fafc;
+    }
+
+    .name-input:focus {
+      border-color: var(--primary);
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    }
+
+    /* BADGE DINÁMICO DE ESTUDIANTE */
+    .student-status-badge {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 800;
+      padding: 0.4rem 0.75rem;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .badge-new {
+      background: #ecfdf5;
+      color: #059669;
+      border: 1px solid #a7f3d0;
+      display: block;
+    }
+
+    .badge-existing {
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+      display: block;
+    }
+
+    /* GRILLA DE SELECCIÓN DE AVATAR */
+    .avatar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .avatar-option {
+      background: #f8fafc;
+      border: 3px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 0.5rem 0.35rem;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .avatar-option:hover {
+      transform: translateY(-4px) scale(1.04);
+      border-color: #a5b4fc;
+      background: #eef2ff;
+    }
+
+    .avatar-option.selected {
+      border-color: var(--secondary);
+      background: #fdf2f8;
+      box-shadow: 0 8px 18px rgba(236, 72, 153, 0.25);
+      transform: scale(1.05);
+    }
+
+    .avatar-img {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #ffffff;
+    }
+
+    .avatar-name {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #475569;
+    }
+
+    .avatar-option.selected .avatar-name {
+      color: var(--secondary);
+    }
+
+    /* BOTÓN DE ENTRADA */
+    .enter-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 9999px;
+      padding: 1.05rem;
+      font-size: 1.25rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.35);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .enter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(99, 102, 241, 0.45);
+    }
+
+    .enter-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* ALERTA DE ERROR */
+    .error-msg {
+      background: #fee2e2;
+      border: 2px solid #ef4444;
+      color: #b91c1c;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      margin-bottom: 1.25rem;
+      display: none;
+      animation: shake 0.3s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    @media (max-width: 540px) {
+      .login-card {
+        padding: 1.75rem 1.25rem;
+      }
+      .avatar-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <!-- Logotipo y Nombre de la Plataforma -->
+    <div class="brand-logo">
+      <img src="Sistema/IMAGEN/logo.svg" alt="MultiAventura Matemática">
+    </div>
+
+    <h1 class="welcome-title">¡Bienvenido a tu Aventura!</h1>
+    <p class="welcome-subtitle">Aprende las tablas del 2 al 10 y prepárate para el SIMCE de 4° básico jugando.</p>
+
+    <!-- Caja de mensajes de error -->
+    <div id="errorAlert" class="error-msg"></div>
+
+    <!-- LISTADO DE ESTUDIANTES GUARDADOS EN ESTE EQUIPO -->
+    <div id="savedStudentsBox" class="saved-students-container" style="display: none;">
+      <div class="saved-students-title">
+        <span>👥 Estudiantes registrados en este equipo:</span>
+        <span style="font-size: 0.75rem; color: #64748b; font-weight: 700;">Toca tu perfil para continuar</span>
+      </div>
+      <div id="savedStudentsList" class="saved-students-list"></div>
+    </div>
+
+    <form id="loginForm" onsubmit="handleLogin(event)">
+      <!-- Campo Nombre -->
+      <div class="form-group">
+        <label for="studentNameInput" class="form-label">
+          ✏️ Nombre del estudiante:
+        </label>
+        <input 
+          type="text" 
+          id="studentNameInput" 
+          class="name-input" 
+          placeholder="Escribe el nombre del estudiante..." 
+          autocomplete="off" 
+          maxlength="20"
+          oninput="checkStudentNameInput()"
+        >
+        <div id="studentStatusBadge" class="student-status-badge"></div>
+      </div>
+
+      <!-- Selección de Avatar -->
+      <div class="form-group">
+        <label class="form-label">
+          🎭 Selecciona tu personaje favorito:
+        </label>
+        
+        <div class="avatar-grid" id="avatarGrid">
+          <div class="avatar-option selected" data-avatar="avatar_astronauta.svg" onclick="selectAvatar('avatar_astronauta.svg', this)">
+            <img class="avatar-img" src="Sistema/IMAGEN/avatar_astronauta.svg" alt="Astronauta">
+            <span class="avatar-name">Astronauta</span>
+          </div>
+
+          <div class="avatar-option" data-avatar="avatar_superheroina.svg" onclick="selectAvatar('avatar_superheroina.svg', this)">
+            <img class="avatar-img" src="Sistema/IMAGEN/avatar_superheroina.svg" alt="Superheroína">
+            <span class="avatar-name">Superhéroe</span>
+          </div>
+
+          <div class="avatar-option" data-avatar="avatar_detective.svg" onclick="selectAvatar('avatar_detective.svg', this)">
+            <img class="avatar-img" src="Sistema/IMAGEN/avatar_detective.svg" alt="Detective">
+            <span class="avatar-name">Detective</span>
+          </div>
+
+          <div class="avatar-option" data-avatar="avatar_robot.svg" onclick="selectAvatar('avatar_robot.svg', this)">
+            <img class="avatar-img" src="Sistema/IMAGEN/avatar_robot.svg" alt="Robot">
+            <span class="avatar-name">Robot</span>
+          </div>
+
+          <div class="avatar-option" data-avatar="avatar_mago.svg" onclick="selectAvatar('avatar_mago.svg', this)">
+            <img class="avatar-img" src="Sistema/IMAGEN/avatar_mago.svg" alt="Mago">
+            <span class="avatar-name">Mago</span>
+          </div>
+
+          <div class="avatar-option" data-avatar="avatar_explorador.svg" onclick="selectAvatar('avatar_explorador.svg', this)">
+            <img class="avatar-img" src="Sistema/IMAGEN/avatar_explorador.svg" alt="Explorador">
+            <span class="avatar-name">Explorador</span>
+          </div>
+
+          <div class="avatar-option" data-avatar="avatar_dragon.svg" onclick="selectAvatar('avatar_dragon.svg', this)">
+            <img class="avatar-img" src="Sistema/IMAGEN/avatar_dragon.svg" alt="Dragón">
+            <span class="avatar-name">Dragón</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón Ingresar -->
+      <button type="submit" class="enter-btn">
+        <span>¡Comenzar la Aventura!</span>
+        <span>🚀</span>
+      </button>
+    </form>
+  </div>
+
+  <script>
+    let chosenAvatar = 'avatar_astronauta.svg';
+
+    function getStudentKey(name) {
+      if (!name) return '';
+      return name.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function getAllUsers() {
+      try {
+        const data = localStorage.getItem('multiAventura_usuarios');
+        return data ? JSON.parse(data) : {};
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function saveAllUsers(users) {
+      localStorage.setItem('multiAventura_usuarios', JSON.stringify(users));
+    }
+
+    function createFreshStudent(nombre, avatar) {
+      const tablas = {};
+      for (let i = 2; i <= 10; i++) {
+        tablas[i] = { progreso: 0, estrellas: 0, completada: false };
+      }
+      return {
+        nombre: nombre.trim(),
+        avatar: avatar || 'avatar_astronauta.svg',
+        puntos: 0,
+        estrellas: 0,
+        tablasProgreso: tablas,
+        logros: {
+          primera_tabla: false,
+          maestro_2: false,
+          racha_tiempo: false,
+          detective_pro: false,
+          memoria_genio: false,
+          simce_aprobado: false
+        },
+        ensayosSimce: []
+      };
+    }
+
+    function selectAvatar(avatarFile, cardEl) {
+      chosenAvatar = avatarFile;
+      document.querySelectorAll('.avatar-option').forEach(el => el.classList.remove('selected'));
+      if (cardEl) cardEl.classList.add('selected');
+    }
+
+    function setAvatarByName(avatarFile) {
+      chosenAvatar = avatarFile;
+      document.querySelectorAll('.avatar-option').forEach(el => {
+        el.classList.toggle('selected', el.getAttribute('data-avatar') === avatarFile);
+      });
+    }
+
+    function showError(msg) {
+      const errEl = document.getElementById('errorAlert');
+      errEl.textContent = msg;
+      errEl.style.display = 'block';
+    }
+
+    function hideError() {
+      const errEl = document.getElementById('errorAlert');
+      errEl.style.display = 'none';
+    }
+
+    // Verificar si el nombre escrito es nuevo o ya tiene cuenta
+    function checkStudentNameInput() {
+      const name = document.getElementById('studentNameInput').value.trim();
+      const badge = document.getElementById('studentStatusBadge');
+      if (!name || name.length < 2) {
+        badge.style.display = 'none';
+        return;
+      }
+
+      const users = getAllUsers();
+      const key = getStudentKey(name);
+
+      if (users[key]) {
+        badge.className = 'student-status-badge badge-existing';
+        badge.innerHTML = `👋 ¡Hola de nuevo, ${users[key].nombre}! Continuarás con tu progreso guardado (${users[key].puntos} pts ⭐).`;
+        badge.style.display = 'block';
+        if (users[key].avatar) {
+          setAvatarByName(users[key].avatar);
+        }
+      } else {
+        badge.className = 'student-status-badge badge-new';
+        badge.innerHTML = `✨ ¡Nuevo estudiante! Tu aventura comenzará desde 0 puntos, sin mezclar el progreso anterior.`;
+        badge.style.display = 'block';
+      }
+    }
+
+    // Ingresar directamente con un estudiante guardado
+    function loginWithExistingStudent(key) {
+      const users = getAllUsers();
+      const student = users[key];
+      if (!student) return;
+
+      localStorage.setItem('multiAventura_estudiante', JSON.stringify(student));
+      window.location.href = 'Sistema/index.html';
+    }
+
+    // Eliminar perfil de un estudiante
+    function deleteStudent(key, event) {
+      event.stopPropagation();
+      const users = getAllUsers();
+      const student = users[key];
+      if (!student) return;
+
+      if (confirm(`¿Deseas eliminar el perfil de "${student.nombre}" de este equipo?`)) {
+        delete users[key];
+        saveAllUsers(users);
+
+        // Si el estudiante eliminado era el último activo, limpiar
+        const currentSaved = localStorage.getItem('multiAventura_estudiante');
+        if (currentSaved) {
+          try {
+            const parsed = JSON.parse(currentSaved);
+            if (getStudentKey(parsed.nombre) === key) {
+              localStorage.removeItem('multiAventura_estudiante');
+            }
+          } catch(e) {}
+        }
+
+        renderSavedStudents();
+        checkStudentNameInput();
+      }
+    }
+
+    // Renderizar lista de estudiantes guardados
+    function renderSavedStudents() {
+      const users = getAllUsers();
+      const keys = Object.keys(users);
+      const container = document.getElementById('savedStudentsBox');
+      const listEl = document.getElementById('savedStudentsList');
+
+      if (keys.length === 0) {
+        container.style.display = 'none';
+        return;
+      }
+
+      container.style.display = 'block';
+      listEl.innerHTML = keys.map(k => {
+        const u = users[k];
+        return `
+          <div class="student-item-pill" onclick="loginWithExistingStudent('${k}')" title="Continuar como ${u.nombre}">
+            <div class="student-item-info">
+              <img class="student-item-avatar" src="Sistema/IMAGEN/${u.avatar || 'avatar_astronauta.svg'}" alt="Avatar">
+              <div>
+                <div class="student-item-name">${u.nombre}</div>
+                <div class="student-item-score">⭐ ${u.puntos || 0} pts • ${u.estrellas || 0} estrellas</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 0.85rem; font-weight: 800; color: var(--primary);">Entrar ➡️</span>
+              <button class="btn-delete-student" onclick="deleteStudent('${k}', event)" title="Eliminar este perfil">🗑️</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      hideError();
+
+      const nameInput = document.getElementById('studentNameInput');
+      const name = nameInput.value.trim();
+
+      // Validación de datos
+      if (!name) {
+        showError('⚠️ ¡Por favor escribe tu nombre antes de comenzar!');
+        nameInput.focus();
+        return;
+      }
+
+      if (name.length < 2) {
+        showError('⚠️ El nombre debe tener al menos 2 letras.');
+        nameInput.focus();
+        return;
+      }
+
+      if (!chosenAvatar) {
+        showError('⚠️ Elige un personaje para acompañarte en tu aventura.');
+        return;
+      }
+
+      const users = getAllUsers();
+      const key = getStudentKey(name);
+      let targetStudent = null;
+
+      if (users[key]) {
+        // Estudiante EXISTENTE: continúa con su propio progreso guardado
+        targetStudent = users[key];
+        targetStudent.avatar = chosenAvatar; // Permite actualizar avatar si lo desea
+      } else {
+        // Estudiante NUEVO: empieza estrictamente en CERO (sin puntos, sin estrellas, sin tablas hechas)
+        targetStudent = createFreshStudent(name, chosenAvatar);
+      }
+
+      // Guardar en la base de datos de usuarios
+      users[key] = targetStudent;
+      saveAllUsers(users);
+
+      // Guardar como estudiante activo para la sesión actual
+      localStorage.setItem('multiAventura_estudiante', JSON.stringify(targetStudent));
+
+      // Redirigir a Sistema/index.html
+      window.location.href = 'Sistema/index.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Si existía un perfil viejo huérfano, migrarlo a la estructura multi-usuario
+      const oldSaved = localStorage.getItem('multiAventura_estudiante');
+      if (oldSaved) {
+        try {
+          const parsed = JSON.parse(oldSaved);
+          if (parsed.nombre) {
+            const users = getAllUsers();
+            const key = getStudentKey(parsed.nombre);
+            if (!users[key]) {
+              users[key] = parsed;
+              saveAllUsers(users);
+            }
+          }
+        } catch (e) {}
+      }
+
+      renderSavedStudents();
+    });
+  </script>
+</body>
+</html>

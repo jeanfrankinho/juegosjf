@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" width="320" height="100">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    <radialGradient id="starGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fde047" />
+      <stop offset="100%" stop-color="#eab308" />
+    </radialGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#4f46e5" flood-opacity="0.3" />
+    </filter>
+  </defs>
+  <!-- Icon Group -->
+  <g transform="translate(10, 10)">
+    <rect x="0" y="0" width="80" height="80" rx="22" fill="url(#logoGrad)" filter="url(#glow)" />
+    <!-- Multiplication symbol with depth -->
+    <path d="M 26 26 L 54 54 M 54 26 L 26 54" stroke="#ffffff" stroke-width="9" stroke-linecap="round" />
+    <!-- Mini star badge -->
+    <circle cx="62" cy="18" r="14" fill="url(#starGrad)" stroke="#ffffff" stroke-width="2" />
+    <polygon points="62,9 65,15 71,15 66,19 68,25 62,21 56,25 58,19 53,15 59,15" fill="#ca8a04" />
+  </g>
+  <!-- Text Group -->
+  <g transform="translate(105, 20)">
+    <text x="0" y="32" font-family="'Nunito', 'Comic Sans MS', sans-serif" font-size="28" font-weight="900" fill="#1e1b4b">
+      Multi<tspan fill="#ec4899">Aventura</tspan>
+    </text>
+    <text x="2" y="56" font-family="'Nunito', 'Segoe UI', sans-serif" font-size="14" font-weight="800" fill="#6366f1" letter-spacing="2">
+      TABLAS &amp; SIMCE 4° BÁSICO
+    </text>
+    <rect x="2" y="64" width="76" height="6" rx="3" fill="#10b981" />
+    <rect x="84" y="64" width="46" height="6" rx="3" fill="#f59e0b" />
+    <rect x="136" y="64" width="30" height="6" rx="3" fill="#ec4899" />
+  </g>
+</svg>

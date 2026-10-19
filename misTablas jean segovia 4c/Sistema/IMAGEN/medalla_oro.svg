@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <linearGradient id="ribbon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+    <radialGradient id="gold" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="40%" stop-color="#facc15" />
+      <stop offset="100%" stop-color="#ca8a04" />
+    </radialGradient>
+  </defs>
+  <!-- Ribbons -->
+  <polygon points="28,20 18,52 32,48 40,32" fill="url(#ribbon)" />
+  <polygon points="52,20 62,52 48,48 40,32" fill="#2563eb" />
+  <!-- Coin -->
+  <circle cx="40" cy="48" r="24" fill="url(#gold)" stroke="#a16207" stroke-width="2" />
+  <circle cx="40" cy="48" r="20" fill="none" stroke="#fef9c3" stroke-width="1.5" stroke-dasharray="3 2" />
+  <!-- Star in center -->
+  <polygon points="40,36 43,44 51,44 45,49 47,57 40,52 33,57 35,49 29,44 37,44" fill="#ffffff" />
+</svg>

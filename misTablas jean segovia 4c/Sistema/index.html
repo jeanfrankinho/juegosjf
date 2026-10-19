@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#6366f1">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="../manifest.json">
+  <title>Sistema MultiAventura - Tablas & SIMCE 4° Básico</title>
+  
+  <!-- Tipografía Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Hojas de Estilos Modulares -->
+  <link rel="stylesheet" href="CSS/estilos.css">
+  <link rel="stylesheet" href="CSS/juegos.css">
+  <link rel="stylesheet" href="CSS/simce.css">
+</head>
+<body>
+
+  <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+  <header class="navbar">
+    <a href="#" class="nav-brand" onclick="location.reload()">
+      <img src="IMAGEN/logo.svg" alt="MultiAventura Matemática">
+    </a>
+
+    <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+      <!-- Puntos y Estrellas -->
+      <div class="nav-stats">
+        <div class="stat-pill stat-points" title="Tus Puntos de Aventurero">
+          <span>💎</span>
+          <span id="userPointsTxt">100 pts</span>
+        </div>
+        <div class="stat-pill stat-stars" title="Estrellas Obtenidas">
+          <span>⭐</span>
+          <span id="userStarsTxt">3 ★</span>
+        </div>
+      </div>
+
+      <!-- Perfil del Estudiante -->
+      <div class="user-badge">
+        <img id="userAvatarImg" class="avatar-mini" src="IMAGEN/avatar_astronauta.svg" alt="Avatar">
+        <div class="user-info">
+          <span id="userNameTxt" class="user-name">Aventurero</span>
+          <span class="user-role">Estudiante 4° Básico</span>
+        </div>
+      </div>
+
+      <!-- Acciones de Sonido y Salida -->
+      <div class="nav-actions">
+        <button id="toggleSoundBtn" class="btn-icon" title="Activar/Desactivar Sonidos">🔊</button>
+        <button id="logoutBtn" class="btn-icon" title="Cambiar de Estudiante o Salir">🚪</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container">
+    
+    <!-- BANNER HERO DE BIENVENIDA -->
+    <section class="hero-banner">
+      <div class="hero-content">
+        <h1>¡Hola, <span id="heroStudentName">Aventurero</span>! 🚀</h1>
+        <p>
+          Explora los secretos de las tablas del 2 al 10, supera emocionantes minijuegos matemáticos y demuestra tus conocimientos en el gran desafío tipo SIMCE.
+        </p>
+      </div>
+      <div class="hero-avatar-show">
+        <img id="heroAvatarImg" src="IMAGEN/avatar_astronauta.svg" alt="Personaje">
+        <div>
+          <div style="font-weight: 900; font-size: 1.15rem;">¡Listo para Aprender!</div>
+          <div style="font-size: 0.85rem; opacity: 0.9;">Nivel Aventurero</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PESTAÑAS DEL MENÚ PRINCIPAL -->
+    <nav class="main-tabs">
+      <button class="tab-btn active" data-tab="tabAprender">
+        <span>📘</span>
+        <span>Aprender Tablas</span>
+        <span class="badge-pill">2 al 10</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tabJuegos">
+        <span>🎮</span>
+        <span>Juegos y Desafíos</span>
+        <span class="badge-pill">9 Juegos</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tabSimce">
+        <span>📝</span>
+        <span>Ensayo SIMCE 4°</span>
+        <span class="badge-pill" style="background: #facc15; color: #713f12;">Desafío</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tabProgreso">
+        <span>📈</span>
+        <span>Progreso y Puntaje</span>
+      </button>
+
+      <button class="tab-btn" data-tab="tabLogros">
+        <span>🏆</span>
+        <span>Logros y Medallas</span>
+      </button>
+    </nav>
+
+    <!-- ==============================================================
+         SECCIÓN 1: APRENDER TABLAS (2 AL 10)
+         ============================================================== -->
+    <section id="tabAprender" class="section-panel active">
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.8rem; font-weight: 900; color: var(--text-dark);">
+          Descubre los Patrones y Grupos de Cada Tabla
+        </h2>
+        <p style="color: var(--text-muted); font-size: 1rem;">
+          Haz clic en cualquier tabla para ver representaciones con objetos reales, trucos matemáticos y poner a prueba tu cálculo mental:
+        </p>
+      </div>
+
+      <!-- Grilla dinámica de tablas del 2 al 10 generada por tablas.js -->
+      <div class="tables-grid" id="tablesGridContainer"></div>
+    </section>
+
+    <!-- ==============================================================
+         SECCIÓN 2: JUEGOS Y DESAFÍOS (9 ACTIVIDADES VARIADAS)
+         ============================================================== -->
+    <section id="tabJuegos" class="section-panel">
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.8rem; font-weight: 900; color: var(--text-dark);">
+          Juegos Matemáticos Dinámicos (9 Desafíos SIMCE)
+        </h2>
+        <p style="color: var(--text-muted); font-size: 1rem;">
+          ¡Aprende sin memorizaciones aburridas! Elige una actividad para ganar puntos y desbloquear logros:
+        </p>
+      </div>
+
+      <div class="games-grid">
+        <!-- 1. Memoria Matemática -->
+        <div class="game-card">
+          <div>
+            <div class="game-card-tag" style="background: #e0e7ff; color: #4338ca;">Problemas Reales</div>
+            <div class="game-card-icon">🃏</div>
+            <h3>Memoria Matemática SIMCE</h3>
+            <p>Relaciona operaciones con situaciones de la vida cotidiana (cajas de lápices, filas de sillas y bolsas).</p>
+          </div>
+          <button class="btn btn-primary btn-block" onclick="JuegosController.openGame('memoria')">
+            ¡Jugar Memoria! 🎴
+          </button>
+        </div>
+
+        <!-- 2. Atrapa el Resultado -->
+        <div class="game-card">
+          <div>
+            <div class="game-card-tag" style="background: #fce7f3; color: #be185d;">Arcade &amp; Rachas</div>
+            <div class="game-card-icon">🫧</div>
+            <h3>Atrapa el Resultado Arcade</h3>
+            <p>Resuelve situaciones rápidas de compras y grupos antes de que suban las burbujas. ¡Gana combos con fuego!</p>
+          </div>
+          <button class="btn btn-secondary btn-block" onclick="JuegosController.openGame('atrapa')">
+            ¡Atrapar Burbujas! 🎯
+          </button>
+        </div>
+
+        <!-- 3. Construye la Multiplicación -->
+        <div class="game-card">
+          <div>
+            <div class="game-card-tag" style="background: #d1fae5; color: #065f46;">Arreglos Rectangulares</div>
+            <div class="game-card-icon">🧱</div>
+            <h3>Construye la Multiplicación</h3>
+            <p>Domina el concepto clave del SIMCE: filas × columnas armando sillas del acto escolar, huertos y bandejas.</p>
+          </div>
+          <button class="btn btn-success btn-block" onclick="JuegosController.openGame('construye')">
+            ¡Construir Filas! 📐
+          </button>
+        </div>
+
+        <!-- 4. ¿Quién tiene la respuesta? -->
+        <div class="game-card">
+          <div>
+            <div class="game-card-tag" style="background: #fef3c7; color: #92400e;">Detector de Errores</div>
+            <div class="game-card-icon">🦸</div>
+            <h3>¿Quién tiene la respuesta?</h3>
+            <p>Elige al compañero correcto y descubre por qué las otras opciones son trampas comunes del SIMCE.</p>
+          </div>
+          <button class="btn btn-accent btn-block" onclick="JuegosController.openGame('personajes')">
+            ¡Elegir Amigo! 👥
+          </button>
+        </div>
+
+        <!-- 5. Desafío contra el Tiempo -->
+        <div class="game-card">
+          <div>
+            <div class="game-card-tag" style="background: #fee2e2; color: #991b1b;">Torneo de Cálculo</div>
+            <div class="game-card-icon">⏱️</div>
+            <h3>Torneo Contra el Tiempo</h3>
+            <p>50 segundos de cálculo mental ágil con 3 vidas y rachas de fuego. ¡Ideal para agilizar tu mente!</p>
+          </div>
+          <button class="btn btn-primary btn-block" onclick="JuegosController.openGame('tiempo')">
+            ¡Iniciar Carrera! ⚡
+          </button>
+        </div>
+
+        <!-- 6. Arrastra y Completa -->
+        <div class="game-card">
+          <div>
+            <div class="game-card-tag" style="background: #e0f2fe; color: #0369a1;">Propiedad Conmutativa</div>
+            <div class="game-card-icon">✋</div>
+            <h3>Arrastra y Completa</h3>
+            <p>Aprende las propiedades de la multiplicación y la suma iterada colocando las fichas en sus casilleros.</p>
+          </div>
+          <button class="btn btn-primary btn-block" onclick="JuegosController.openGame('arrastra')">
+            ¡Completar Fichas! 🧩
+          </button>
+        </div>
+
+        <!-- 7. Detective Matemático -->
+        <div class="game-card">
+          <div>
+            <div class="game-card-tag" style="background: #fef08a; color: #854d0e;">Misterio &amp; Pistas</div>
+            <div class="game-card-icon">🔍</div>
+            <h3>Detective Matemático</h3>
+            <p>Descifra 3 pistas de múltiplos, números pares y problemas reales para resolver los casos de misterio.</p>
+          </div>
+          <button class="btn btn-accent btn-block" onclick="JuegosController.openGame('detective')">
+            ¡Resolver Caso! 🕵️
+          </button>
+        </div>
+
+        <!-- 8. Súper Mercado SIMCE -->
+        <div class="game-card">
+          <div>
+            <div class="game-card-tag" style="background: #fef3c7; color: #b45309;">Precios &amp; Dinero</div>
+            <div class="game-card-icon">🛒</div>
+            <h3>Súper Mercado SIMCE</h3>
+            <p>Atiende a los clientes calculando el total de sus compras con precios unitarios de productos reales.</p>
+          </div>
+          <button class="btn btn-success btn-block" onclick="JuegosController.openGame('supermercado')">
+            ¡Abrir Caja! 💵
+          </button>
+        </div>
+
+        <!-- 9. El Salto de la Ranita -->
+        <div class="game-card">
+          <div>
+            <div class="game-card-tag" style="background: #d1fae5; color: #065f46;">Recta Numérica</div>
+            <div class="game-card-icon">🐸</div>
+            <h3>El Salto de la Ranita</h3>
+            <p>Haz saltar la ranita en la recta numérica de 5 en 5, 6 en 6 o 7 en 7 para descubrir patrones y metas.</p>
+          </div>
+          <button class="btn btn-primary btn-block" onclick="JuegosController.openGame('ranita')">
+            ¡Saltar a la Meta! 🌿
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         SECCIÓN 3: ENSAYO MATEMÁTICO TIPO SIMCE
+         ============================================================== -->
+    <section id="tabSimce" class="section-panel">
+      <!-- Banner Destacado SIMCE -->
+      <div class="simce-highlight-card">
+        <div>
+          <span class="simce-badge-big">SIMCE 4° BÁSICO</span>
+          <h2>Ensayo Matemático Contextualizado</h2>
+          <p>
+            10 preguntas con situaciones reales y cotidianas: compras en el colegio, orden de filas en el teatro, útiles escolares y huertos escolares. ¡Responde todas las preguntas a tu propio ritmo!
+          </p>
+        </div>
+        <div style="font-size: 5rem; opacity: 0.9;">📝</div>
+      </div>
+
+      <!-- Contenedor del Ensayo SIMCE gestionado dinámicamente por simce.js -->
+      <div id="simceContainerWrapper">
+        <div class="simce-container">
+          <!-- Panel lateral con las 10 preguntas -->
+          <aside class="simce-sidebar">
+            <div>
+              <div class="simce-sidebar-header">
+                <h3>Preguntas SIMCE</h3>
+                <p>Selecciona una pregunta para responderla:</p>
+              </div>
+              <div class="simce-questions-grid" id="simceNavGrid"></div>
+            </div>
+            <div class="simce-sidebar-footer">
+              <div class="simce-progress-counter" id="simceProgressTxt">Respondidas: 0 de 10</div>
+            </div>
+          </aside>
+
+          <!-- Área principal de la pregunta actual -->
+          <main id="simceMainArea"></main>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         SECCIÓN 4: PROGRESO Y PUNTAJE
+         ============================================================== -->
+    <section id="tabProgreso" class="section-panel">
+      <div style="margin-bottom: 2rem;">
+        <h2 style="font-size: 1.8rem; font-weight: 900; color: var(--text-dark);">
+          Tu Resumen de Avance en las Tablas
+        </h2>
+        <p style="color: var(--text-muted); font-size: 1rem;">
+          Observa qué tablas ya dominas por completo y cuáles puedes seguir practicando:
+        </p>
+      </div>
+
+      <!-- Tarjeta de Progreso General -->
+      <div style="background: #ffffff; border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 1.75rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+          <h3 style="font-size: 1.3rem; font-weight: 900; color: var(--primary-dark);">Maestría Global de Multiplicación</h3>
+          <span id="overallProgressTxt" style="font-weight: 800; color: var(--text-muted);">0% completado</span>
+        </div>
+        <div style="background: #f1f5f9; height: 16px; border-radius: 8px; overflow: hidden;">
+          <div id="overallProgressBar" style="background: linear-gradient(90deg, #6366f1, #10b981); height: 100%; width: 20%; transition: width 0.5s ease;"></div>
+        </div>
+      </div>
+
+      <!-- Desglose tabla por tabla -->
+      <div class="tables-grid" id="progressDetailedList"></div>
+
+      <!-- Opciones de reinicio o cambio de estudiante -->
+      <div style="margin-top: 2rem; padding: 1.5rem; background: #ffffff; border: 2px dashed #cbd5e1; border-radius: var(--radius-md); text-align: center; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <button class="btn btn-outline btn-sm" onclick="AppState.resetCurrentProgress()">
+          🔄 Reiniciar mi progreso a 0 puntos
+        </button>
+        <button class="btn btn-outline btn-sm" onclick="window.location.href='../index.html'">
+          👥 Cambiar de estudiante
+        </button>
+      </div>
+    </section>
+
+    <!-- ==============================================================
+         SECCIÓN 5: LOGROS Y RECOMPENSAS
+         ============================================================== -->
+    <section id="tabLogros" class="section-panel">
+      <div style="margin-bottom: 1.5rem;">
+        <h2 style="font-size: 1.8rem; font-weight: 900; color: var(--text-dark);">
+          Medallas e Insignias Desbloqueables
+        </h2>
+        <p style="color: var(--text-muted); font-size: 1rem;">
+          Supera desafíos en la plataforma para desbloquear cada trofeo y ganar puntos extra:
+        </p>
+      </div>
+
+      <!-- Grilla de Logros generada por app.js -->
+      <div class="achievements-grid" id="achievementsList"></div>
+    </section>
+
+  </main>
+
+  <!-- ==============================================================
+       MODAL 1: VISOR INTERACTIVO DE TABLA (APRENDER & PRACTICAR)
+       ============================================================== -->
+  <div id="tableModalOverlay" class="view-overlay">
+    <div class="view-modal">
+      <div class="modal-header">
+        <div class="modal-title-box">
+          <span style="font-size: 1.8rem;">📘</span>
+          <h3 id="tableModalTitle" style="font-size: 1.4rem; font-weight: 900; color: var(--text-dark);">
+            Aventura con la Tabla
+          </h3>
+        </div>
+        <button class="modal-close-btn" onclick="TablasController.closeTableModal()">✕</button>
+      </div>
+      <div class="modal-body" id="tableModalBody"></div>
+    </div>
+  </div>
+
+  <!-- ==============================================================
+       MODAL 2: ARENA DE JUEGOS Y DESAFÍOS
+       ============================================================== -->
+  <div id="gameModalOverlay" class="view-overlay">
+    <div class="view-modal">
+      <div class="modal-header">
+        <div class="modal-title-box">
+          <span style="font-size: 1.8rem;">🎮</span>
+          <h3 id="gameModalTitle" style="font-size: 1.4rem; font-weight: 900; color: var(--text-dark);">
+            Juego Matemático
+          </h3>
+        </div>
+        <button class="modal-close-btn" onclick="JuegosController.closeGameModal()">✕</button>
+      </div>
+      <div class="modal-body" id="gameModalBody"></div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS JS -->
+  <script src="JS/audio.js"></script>
+  <script src="JS/app.js"></script>
+  <script src="JS/tablas.js"></script>
+  <script src="JS/juegos.js"></script>
+  <script src="JS/simce.js"></script>
+</body>
+</html>
